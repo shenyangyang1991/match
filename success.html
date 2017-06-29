@@ -1,0 +1,155 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>报名成功</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script type="text/javascript" src="./js/tb.js"></script>
+    <style type="text/css">
+        .content {
+            text-align:center;
+        }
+        .content .icon_succ{
+            display: block;
+            width: .65rem;
+            height: .65rem;
+            margin: 0 auto;
+        }
+        .content .p1{
+            width: 2.2rem;
+            margin: 0 auto;
+            margin-top: .24rem;
+            font-weight: 600;
+            font-size: .2rem;
+        }
+        .content-top{
+            margin: .4rem .56rem 0;
+        }
+        .content-top .p2{
+            margin-top: .24rem;
+            font-size: .16rem;
+            color: #666;
+        }
+        .content-mid1{
+            width: 3.45rem;
+            height: 4.53rem;
+            margin: 0 auto;
+            margin-top: .4rem;
+            box-shadow: 0 1px 4px 0 rgba(161,121,114,0.34);
+            border-radius: 4px;
+        }
+        .content-mid{
+            padding-top: .22rem;
+            text-align: center;
+        }
+        .qcode{
+            display: block;
+            width: 1.61rem;
+            height: 1.61rem;
+            margin: 0 auto;
+            margin-top: .28rem;
+        }
+        .icon_comp{
+            width: .36rem;
+            height: .36rem;
+            margin-top: .21rem;
+        }
+        .text_comp{
+            height: .36rem;
+            margin-left: .19rem;
+            margin-top: .21rem;
+            line-height: .36rem;
+            font-size: .16rem;
+            color: #252525;
+        }
+        .p3{
+            margin-top: .32rem;
+        }
+        .p3 span{
+            font-size: .2rem;
+            font-weight: 600;
+        }
+
+        .content {
+          padding-bottom: .8rem;
+        }
+
+        .content-foot {
+          position: fixed;
+          bottom: 0; left: 0; right: 0;
+          z-index: 1000;
+          width: 100%;
+          height: .64rem;
+          margin: 0 auto;
+          /*box-shadow: 0 -2px 2px 0 rgba(161,121,114,0.34);*/
+          background: #333;
+        }
+
+        .content-foot a {
+          display: block;
+          width: 100%;
+          height: .44rem;
+          margin: .1rem auto;
+          font-size: .18rem;
+          /*font-weight: 600;*/
+          color: #f0f0f0;
+          line-height: .44rem;
+          text-align: center;
+          letter-spacing: 1px;
+          /*border: 2px solid #333;*/
+          /*border-radius: 4px;*/
+        }
+        .dd::before {
+          float: left;
+          content: ' ';
+          width: .16rem;
+          height: .16rem;
+          margin-right: .1rem;
+          background: url('./img/Group 9@2x.png') no-repeat 0 .04rem;
+          background-size: .16rem .16rem;
+        }
+
+        .dd {
+          float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="content-top">
+            <img class="icon_succ" src="./img/successicon@2x.png">
+            <p class="p1">报名成功!</p>
+            <p class="p2 dd" style="text-align: left;">
+              报名信息和领取福利指南已经通过短信发送到您的手机中了哦，请注意查收！
+            </p>
+            <p class="p2 dd" style="text-align: left;">另外您可以在嗨范儿APP个人中心中我的页面查看相关的信息。</p>
+        </div>
+        <!-- <div class="content-mid1">
+            <div class="content-mid">
+                <p class="p1">CPDC2017中国流行舞公开赛正式开启·票卷</p>
+                <img class="qcode" src="./img/Group 3@2x.png">
+                <div class="clearfix" style="text-align: center; width: 1.1rem; margin: 0 auto;">
+                    <img src="./img/Group 4@2x.png" class="fl icon_comp">
+                    <p  class="fl text_comp">嗨范儿</p>
+                </div>
+                <p class="p3"><span>票号：</span><span>1234567890</span></p>
+            </div>
+        </div> -->
+        <div class="content-foot">
+          <a id="fuli">立即领取赛事福利（下载嗨范儿APP）</a>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/zepto.js"></script>
+    <script>
+      $('#fuli').on("click",function(event){
+        event.preventDefault();
+        location.href = 'fuli.html';
+      });
+    </script>
+</body>
+
+</html>

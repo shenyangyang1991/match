@@ -1,0 +1,36 @@
+html{
+    font-size: 100px;
+}
+*{
+    padding: 0;
+    margin: 0;
+    font-weight: 300;
+    color: #000;
+}
+li{
+    list-style-type: none;
+}
+body{
+    font-family: -apple-system, BpnkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Helvetica Neue", Helvetica, Arial, "Monaco", "Menlo", "Consolas", sans-serif;
+    font-size: .14rem;
+    line-height: 1.5;
+    color: #000;
+    overflow-x: hidden;
+}
+input,button,select,textarea{outline:none}
+textarea{resize:none}
+.none{
+    display: none;
+}
+.fl{
+    float: left
+}
+.fr{
+    float: right;
+}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{*+height:1%;}
+.content{
+    padding: 0 .1rem;
+    padding-bottom: .6rem;
+}

@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>填写报名信息</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/fill.css">
+    <script type="text/javascript" src="./js/tb.js"></script>
+    <script type="text/javascript" src="./js/zepto.js"></script>
+    <script>
+      function getQueryString(name) {
+          var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+          var r = window.location.search.substr(1).match(reg);
+          if (r != null) return unescape(r[2]); return null;
+      }
+      var fee = getQueryString("fee");
+      var money = 0;
+      if (fee && (fee >= 1 && fee <= 2)) {
+        money = fee == 1 ? 199.00 : 399.00;
+      } else {
+        alert('您报名的赛事不存在！请重新选择赛事！');
+        location.href = 'index.html';
+      }
+    </script>
+</head>
+<body>
+    <div class="content">
+        <div class="info">
+            <h2>个人信息</h2>
+            <div class="basic-info">
+                <input type="text" name="name" placeholder="请输入真实姓名" />
+                <input type="text" name="age" placeholder="请输入身份证号" />
+                <input type="text" name="phone" placeholder="请输入11位手机号" />
+                <input type="text" name="age" placeholder="请输入您的年龄" />
+            </div>
+            <h3>性别</h3>
+            <div class="item clearfix" id="sex" data-param="1">
+                <p data-param="1" class="item-child fl item-child-active">男</p>
+                <p data-param="2" class="item-child fl">女</p>
+            </div>
+        </div>
+        <div class="info">
+            <div>
+                <h3>报名赛事</h3>
+                <div class="item clearfix" id="match" data-param="">
+
+                </div>
+                <script>
+                  if (fee == 1) {
+                    $('#match').append('<p data-param="1" class="item-child fl">FREESTYLE</p>');
+                    $('#match').append('<p data-param="2" class="item-child fl">BREAKING</p>');
+                    $('#match').append('<p data-param="3" class="item-child fl">SHUFFKE</p>');
+                  } else {
+                    $('#match').append('<p data-param="4" class="item-child fl item-child-active">齐舞赛</p>');
+                    $('#match').attr('data-param', '4');
+                  }
+                </script>
+            </div>
+            <div>
+                <h3>海选城市</h3>
+                <div class="item clearfix" id="city" data-param="">
+                    <p data-param="1" class="item-child fl">哈尔滨</p>
+                    <p data-param="2" class="item-child fl">长春</p>
+                    <p data-param="3" class="item-child fl">沈阳</p>
+                    <p data-param="4" class="item-child fl">天津</p>
+                    <p data-param="5" class="item-child fl">上海</p>
+                    <p data-param="6" class="item-child fl">武汉</p>
+                    <p data-param="7" class="item-child fl">广州</p>
+                    <p data-param="8" class="item-child fl">兰州</p>
+                    <p data-param="9" class="item-child fl">成都</p>
+                    <p data-param="10" class="item-child fl">西安</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sign-up clearfix">
+        <a class="sign-up-left fl">
+            <span>合计：</span><span id="fee-show"></span>
+        </a>
+        <a class="sign-up-right fl">
+            提交订单
+        </a>
+    </div>
+    <div class="background none"></div>
+    <div class="pay-info bottom">
+      <!--   -->
+        <div class="pay-info-title clearfix">
+            <img class="fl cancel" src="./img/Group 12@2x.png">
+            <div class="fl title clearfix">
+                <img class="pay-icon fl" src="./img/Fill 1@2x.png">
+                <p class="fl">确认支付</p>
+            </div>
+            <img class="fr cancel" src="./img/Group 13@2x.png">
+        </div>
+        <div class="pay-info-body">
+            <div class="sum">￥100.00</div>
+            <div class="order clearfix">
+                <div class="order-left fl">订单信息</div>
+                <div class="order-right fl">订购比赛报名费【CPDC2017中国流行舞公开赛】</div>
+            </div>
+            <div class="way clearfix">
+                <div class="way-left fl">付款方式</div>
+                <div class="way-right fl">账户余额</div>
+            </div>
+            <botton id="go" class="pay-now">立即付款</botton>
+        </div>
+    </div>
+
+    <script>
+        $("#fee-show").text("￥"+money+"元");
+        $(".sum").text("￥"+money);
+        $('#go').on("click", function (event) {
+          event.preventDefault();
+          location.href = 'success.html';
+        });
+        $(".item-child").on("click", function (event) {
+            event.preventDefault();
+            $(this).addClass("item-child-active").siblings().removeClass("item-child-active");
+            var index = $(this).attr("data-param");
+            $(this).parent().attr("data-param",index);
+        });
+        $(".sign-up-right").on("click",function(event){
+            event.preventDefault();
+            var name = $("input[name=name]").val();
+            var phone = $("input[name=phone]").val();
+            var age = $("input[name=age]").val();
+            var sex = $("#sex").attr("data-param");
+            var match = $("#match").attr("data-param");
+            var city = $("#city").attr("data-param");
+            if(!name){
+                alert("请填写姓名");
+                return false;
+            }
+            if(!(/[\u4e00-\u9fa5]{2,4}/.test(name))||name.length<2){
+                alert("请输入正确的姓名");
+                return false;
+            }
+            if(!phone){
+                alert("请填写手机号");
+                return false;
+            }
+            if(!(/^1[34578]\d{9}$/.test(phone))){
+                alert("手机号码有误，请重填");
+                return false;
+            }
+            if(!age){
+                alert("请填写年龄");
+                return false;
+            }
+            if(!(/^\+?[1-9][0-9]*$/.test(age))){
+                alert("年龄输入有误");
+                return false;
+            }
+            if(!sex){
+                alert("请选择性别");
+                return false;
+            }
+            if(!match){
+                alert("请选择赛事种类");
+                return false;
+            }
+            if(!city){
+                alert("请选择城市");
+                return false;
+            }
+            $(".background").removeClass("none");
+            $(".pay-info").removeClass("bottom");
+        })
+        $(".cancel").on("click",function(event){
+            event.preventDefault();
+            $(".background").addClass("none");
+            $(".pay-info").addClass("bottom");
+        })
+
+    </script>
+</body>
+</html>
