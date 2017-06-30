@@ -18,7 +18,7 @@
 	$api['info'] = array('url'=>'/User/User/getInfoForUserId','type'=>'post','info'=>'pgc');
 	$api['classes'] = array('url'=>'/curriculum/index/get_curriculum_preview','type'=>'post','info'=>'pgc');
 	$api['bm'] = array('url'=>'/Activity/MatchTe/sign_up','type'=>'post','info'=>'bm');
-
+	$api['bmi'] = array('url'=>'/Activity/MatchTe/get_info','type'=>'post','info'=>'bm');
 	$api['user_vidoes'] = array('url'=>'/Videos/Videos/get_user_videos','type'=>'post','info'=>'pgc');
 	$api['match'] = array('url'=>'/activity/match/get_detail','type'=>'post','info'=>'match');
 

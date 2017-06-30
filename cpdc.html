@@ -122,6 +122,7 @@
           border-radius: 4px;
         }
     </style>
+
 </head>
 <body>
     <div class="content">
@@ -133,7 +134,27 @@
             </p>
             <p class="p2" style="text-align: left;">另外您可以在嗨范儿APP个人中心中我的页面查看相关的信息。</p>
         </div> -->
-        <div class="content-mid1">
+        <div class="content-mid2" id="cmd" style="display: none;">
+            <div class="content-mid" style="text-align: left;">
+
+              <p class="m">页面获取方式错误。</p>
+            </div>
+        </div>
+
+        <div class="content-mid2" id="cmd1" style="height: 3rem; display: none;">
+            <div class="content-mid" style="text-align: left;">
+
+              <p class="m" style="font-size: .16rem;padding: .2rem;">系统没有您的报名信息。
+                <br>出现原因：
+               <br>1. 报名时，系统自动注册您的手机号为新用户，查看报名的信息需要登录以手机号为账号的新用户。
+               新用户密码已经通过短信的形式发送给您，如果您没有收到，马上联系我们客服进行咨询新用户密码，客服QQ 123456。
+              <br>2. 您没有进行报名参赛，点击<a href="http://www.highfaner.com/match/index.html">报名入口</a></p>
+            </div>
+        </div>
+
+
+        <div class="content-mid1" id="ddd" style="display: none;">
+
             <div class="content-mid">
                 <p class="p1">CPDC2017中国流行舞公开赛正式开启·票卷</p>
                 <img class="qcode" src="./img/Group 3@2x.png">
@@ -141,27 +162,77 @@
                     <img src="./img/Group 4@2x.png" class="fl icon_comp">
                     <p  class="fl text_comp">嗨范儿</p>
                 </div>
-                <p class="p3"><span>票号：</span><span>1234567890</span></p>
+                <p class="p3"><span>票号：</span><span id="id_no"></span></p>
             </div>
         </div>
-        <div class="content-mid2">
+        <div class="content-mid2" id="ddd1" style="display: none;">
             <div class="content-mid" style="text-align: left;">
               <p class="t">滴卡激活码：</p>
-              <p class="m">1321346546464</p>
+              <p class="m" id="didik"></p>
             </div>
         </div>
 
 
-        <div class="content-foot">
+        <div class="content-foot" id="ddd2" style="display: none;">
           <a id="fuli">免费领取赞助商福利</a>
         </div>
     </div>
+    <script>
+      function getQueryString(name) {
+          var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+          var r = window.location.search.substr(1).match(reg);
+          if (r != null) return unescape(r[2]); return null;
+      }
+      var s = getQueryString('st');
+      if(!s) {
+        s = '';
+        alert('获取失败！');
+        document.getElementById('cmd').style.display = 'block';
+      } else {
+
+      }
+    </script>
     <script type="text/javascript" src="./js/zepto.js"></script>
     <script>
       $('#fuli').on("click",function(event){
         event.preventDefault();
         location.href = 'fuli.html';
       });
+
+      function get(param){
+        $.ajax({
+          url: param.url,
+          data: param.data,
+          dataType: 'json',
+          error: function() {
+            alert('网络错误!');
+          },
+          success: param.success,
+          timeout: 60000,
+          type: 'POST'
+        });
+      }
+      if (s) {
+        get({
+              url: '../php1/index.php',
+              data: {url: 'bmi', token: s},
+              success: function(data) {
+                if (data && data.code == "1") {
+                  var info = data.data;
+                  $('#id_no').text(info.order_no);
+                  $('#didik').text(info.didi_code);
+                  document.getElementById('ddd').style.display = 'block';
+                  document.getElementById('ddd1').style.display = 'block';
+                  document.getElementById('ddd2').style.display = 'block';
+                } else if(data && data.code == "-5040010") {
+                  $('#cmd1').show();
+                } else {
+                  alert(data.msg);
+                }
+              }
+            });
+      }
+
     </script>
 </body>
 
