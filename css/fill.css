@@ -90,6 +90,70 @@
     box-sizing: border-box;
     transition:bottom .2s;
 }
+
+.code-info {
+  position: fixed;
+  bottom: 0; left: 0; right: 0; top: 0;
+  z-index: 999999999999;
+  width: 3.55rem;
+  height: 2.6rem;
+  margin: auto;
+  padding: .16rem;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.hide {
+  display: none;
+}
+.code-group {
+  height: .45rem;
+  margin-top: .3rem;
+  overflow: hidden;
+}
+.pull-left {
+  float: left;
+}
+
+.cbtn {
+  text-decoration: none;
+  text-align: center;
+  line-height: .45rem;
+  font-size: .16rem;
+  color: #959595;
+  background: #eee;
+  border-radius: 5px;
+}
+.pull-right {
+  float: right;
+}
+.code-input {
+  width: 2.1rem;
+  height: .44rem;
+  border-radius: 5px;
+}
+.code-input input {
+  width: 1.94rem;
+  height: .44rem;
+  border: 0;
+  border-radius: 5px;
+  font-size: .16rem;
+  padding-left: .16rem;
+  color: #959595;
+  background: #eee;
+}
+.code-btn {
+  width: 1rem;
+  height: .44rem;
+  margin-left: .13rem;
+
+}
+.code-btn img {
+  display: block;
+  width: 1rem;
+  height: .44rem;
+  box-sizing: border-box;
+}
 .bottom{
     bottom: -4rem;
 }
@@ -165,6 +229,18 @@
   font-weight: 600;
   line-height: .22rem;
   text-align: right;
+}
+.code-now{
+    display: block;
+    height: .44rem;
+    margin-top:.3rem;
+    font-size: .2rem;
+    line-height: .44rem;
+    color: #fff;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background: #333333;
 }
 .pay-now{
     display: block;
