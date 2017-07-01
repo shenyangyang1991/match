@@ -75,15 +75,81 @@
   <body>
     <div class="content">
       <input type="text" name="name" placeholder="姓名" />
-      <input type="text" name="id" placeholder="手机号" />
-      <input type="text" name="phone" placeholder="微信号" />
-      <input type="text" name="age" placeholder="公司" />
-      <input type="text" name="age" placeholder="职位 " />
+      <input type="text" name="phone" placeholder="手机号" />
+      <input type="text" name="wx" placeholder="微信号" />
+      <input type="text" name="cm" placeholder="公司" />
+      <input type="text" name="zw" placeholder="职位 " />
       <p>请确保以上信息真实性方便我们与您取得联系</p>
       <img src="./img/bnr.png" alt="">
       <div class="btn">
         立即提交
       </div>
     </div>
+      <script type="text/javascript" src="./js/zepto.js"></script>
+      <script>
+      function get(param){
+        $.ajax({
+          url: param.url,
+          data: param.data,
+          dataType: 'json',
+          error: function() {
+            alert('网络错误!');
+          },
+          success: param.success,
+          timeout: 60000,
+          type: 'POST'
+        });
+      }
+        $('.btn').on('click', function(event){
+          event.preventDefault();
+          var name = $("input[name=name]").val();
+          var phone = $("input[name=phone]").val();
+          var wx = $("input[name=wx]").val();
+          var cm = $("input[name=cm]").val();
+          var zw = $("input[name=zw]").val();
+          if(!name){
+              alert("请填写姓名");
+              return false;
+          }
+          if(!(/[\u4e00-\u9fa5]{2,4}/.test(name))||name.length<2){
+              alert("请输入正确的汉字姓名");
+              return false;
+          }
+          if(!phone){
+              alert("请填写手机号");
+              return false;
+          }
+          if(!wx){
+              alert("请填写微信号");
+              return false;
+          }
+          if(!(/^1[34578]\d{9}$/.test(phone))){
+              alert("手机号码有误，请重填");
+              return false;
+          }
+
+          if(!zw) {
+            zw = "无";
+          }
+
+          if(!cm) {
+            cm = "无";
+          }
+
+          get({
+            url: '../php1/index.php',
+            data: {url: 'fbh',company: cm, phone: phone, position: zw, user_name: name, wx_no: wx},
+            success: function(data) {
+              if (data && data.code == "1") {
+                var d = data.data;
+                var urls = 's.html';
+                location.href = urls;
+              } else {
+                alert(data.msg);
+              }
+            }
+          });
+        });
+      </script>
   </body>
 </html>

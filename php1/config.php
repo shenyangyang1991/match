@@ -21,5 +21,5 @@
 	$api['bmi'] = array('url'=>'/Activity/MatchTe/get_info','type'=>'post','info'=>'bm');
 	$api['user_vidoes'] = array('url'=>'/Videos/Videos/get_user_videos','type'=>'post','info'=>'pgc');
 	$api['match'] = array('url'=>'/activity/match/get_detail','type'=>'post','info'=>'match');
-
+	$api['fbh'] = array('url'=>'/Activity/MatchTe/sign_up_fbh','type'=>'post','info'=>'fbh');
 ?>
