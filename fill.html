@@ -8,6 +8,22 @@
     <title>填写报名信息</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="stylesheet" type="text/css" href="./css/fill.css">
+    <style media="screen">
+      .loading {
+        position: fixed;
+        top: 0; bottom: 0; left: 0; right: 0;
+        z-index: 999999999999;
+        width: 3.55rem;
+        height: .5rem;
+        margin: auto;
+        font-size: .18rem;
+        text-align: center;
+        line-height: .5rem;
+        background: #fff;
+        border-radius: 5px;
+        color: #000;
+      }
+    </style>
     <script type="text/javascript" src="./js/tb.js"></script>
     <script type="text/javascript" src="./js/zepto.js"></script>
     <script>
@@ -127,6 +143,10 @@
             </div>
             <!-- <botton id="go" class="pay-now">立即付款</botton> -->
         </div>
+    </div>
+
+    <div class="loading hide">
+      正在提交订单...
     </div>
 
     <script>
@@ -322,15 +342,21 @@
               return false;
             }
 
+            $('.loading').show();
+            $('.background').removeClass('none');
             get({
               url: '../php1/index.php',
               data: {url: 'bm',age: age, city_name: city, code: __code, id_no: id, metch_name: match, metch_type: fee, phone: phone,sex: sex,user_name: name},
               success: function(data) {
                 if (data && data.code == "1") {
+                  $('.loading').hide();
+                  $('.background').addClass('none');
                   var d = data.data;
                   var urls = 'http://pay.highfaner.com/pay/ali/pay_url?order_id=' + d.order_id + '&order_no=' + d.order_no + '&return_url=http://www.highfaner.com/match/success.html';
                   location.href = urls;
                 } else {
+                  $('.loading').hide();
+                  $('.background').addClass('none');
                   alert(data.msg);
                 }
               }
