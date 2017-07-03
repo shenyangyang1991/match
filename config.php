@@ -1,7 +1,7 @@
 <?php
 	// $true_url = "http://121.42.194.207";
 	$true_url = "http://dev.open.api.highfaner.com";
-	
+
 	//登录接口
 	$api['addMo'] = array('url'=>'/Commodity/Commodity/add_modity','type'=>'post','info'=>'add');
 	$api['login'] = array('url'=>'/User/Login/index','type'=>'post','info'=>'账号密码登录');
@@ -23,8 +23,8 @@
 	$api['emailcode'] = array('url'=>'/User/User/getEmailCode','type'=>'post','info'=>'emailcode');
 	$api['modifyuser'] = array('url'=>'/User/User/modifyUserInfo','type'=>'post','info'=>'modifyuser');
 	$api['resetemail'] = array('url'=>'/User/User/resetPwdForEmail','type'=>'post','info'=>'resetemail');
-	$api['followuser'] = array('url'=>'/User/User/followUser','type'=>'post','info'=>'followuser'); 
-	$api['delfollow'] = array('url'=>'/User/User/cancelFollowUser','type'=>'post','info'=>'delfollow'); 
+	$api['followuser'] = array('url'=>'/User/User/followUser','type'=>'post','info'=>'followuser');
+	$api['delfollow'] = array('url'=>'/User/User/cancelFollowUser','type'=>'post','info'=>'delfollow');
 	$api['getmsg'] = array('url'=>'/Message/SystemInfo/getList','type'=>'post','info'=>'getmsg');
 	$api['addshop'] = array('url'=>'/order/shop/add_shop','type'=>'post','info'=>'addshop');
 	$api['shoplist'] = array('url'=>'/order/shop/list_shop','type'=>'post','info'=>'shoplist');
@@ -39,4 +39,10 @@
 	// $api['vieworder'] = array('url'=>'/order/order/look_order','type'=>'post','info'=>'vieworder');
 	$api['zhaop'] = array('url'=>'/message/edition/leav_message','type'=>'post','info'=>'order');
 	$api['match'] = array('url'=>'/activity/match/get_detail','type'=>'post','info'=>'match');
+	$api['bm'] = array('url'=>'/Activity/MatchTe/sign_up','type'=>'post','info'=>'bm');
+	$api['bmi'] = array('url'=>'/Activity/MatchTe/get_info','type'=>'post','info'=>'bm');
+	$api['user_vidoes'] = array('url'=>'/Videos/Videos/get_user_videos','type'=>'post','info'=>'pgc');
+	$api['match'] = array('url'=>'/activity/match/get_detail','type'=>'post','info'=>'match');
+	$api['fbh'] = array('url'=>'/Activity/MatchTe/sign_up_fbh','type'=>'post','info'=>'fbh');
+	$api['imgCode'] = array('url'=>'/Basic/ImgVerify/getCode','type'=>'post','info'=>'图片验证码');
 ?>

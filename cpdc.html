@@ -219,7 +219,7 @@
               success: function(data) {
                 if (data && data.code == "1") {
                   var info = data.data;
-                  $('#id_no').text(info.order_no);
+                  $('#id_no').text(info.ticket_no);
                   $('#didik').text(info.didi_code);
                   document.getElementById('ddd').style.display = 'block';
                   document.getElementById('ddd1').style.display = 'block';

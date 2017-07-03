@@ -220,7 +220,11 @@
         });
         $('input[name=phone]').change(function(event){
           event.preventDefault();
+          var phone = $(this).val();
           if(!($.trim($(this).val()))) {
+            return;
+          }
+          if(!(/^1[34578]\d{9}$/.test(phone))){
             return;
           }
           get({
@@ -324,7 +328,7 @@
               success: function(data) {
                 if (data && data.code == "1") {
                   var d = data.data;
-                  var urls = 'http://pay.dev.highfaner.com/pay/ali/pay_url?order_id=' + d.order_id + '&order_no=' + d.order_no + '&return_url=http://www.highfaner.com/match/success.html';
+                  var urls = 'http://pay.highfaner.com/pay/ali/pay_url?order_id=' + d.order_id + '&order_no=' + d.order_no + '&return_url=http://www.highfaner.com/match/success.html';
                   location.href = urls;
                 } else {
                   alert(data.msg);
