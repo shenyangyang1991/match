@@ -191,7 +191,7 @@
 .message .close {
   position: absolute;
   left: 0; right: 0;
-  bottom: .3rem;
+  bottom: .8rem;
   z-index: 3;
   width: 1.4rem;
   height: .6rem;

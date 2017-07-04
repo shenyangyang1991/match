@@ -36,7 +36,7 @@
         }
         .content-mid1{
             width: 3.45rem;
-            height: 8.53rem;
+            height: 8.63rem;
             margin: 0 auto;
             margin-top: .4rem;
             box-shadow: 0 1px 4px 0 rgba(161,121,114,0.34);
@@ -88,8 +88,26 @@
             margin-top: .32rem;
         }
         .p3 span{
-            font-size: .2rem;
+            font-size: .16rem;
             font-weight: 600;
+        }
+
+        .pp {
+          text-align: left;
+          overflow: hidden;
+        }
+
+        .pp span:first-child {
+          float: left;
+          width: 1rem;
+          margin-left: .1rem;
+          /*margin-right: .1rem;*/
+        }
+        .pp span:last-child {
+          float: left;
+          width: 2.15rem;
+          /*margin-left: .1rem;*/
+          /*margin-right: .1rem;*/
         }
 
         .content {
@@ -121,6 +139,46 @@
           border: 2px solid #333;
           border-radius: 4px;
         }
+        #cmd2 input {
+          display: block;
+          width: 2.35rem;
+          height: .45rem;
+          margin-top: .2rem;
+          margin-left: .4rem;
+          padding-left: .2rem;
+          border: none;
+          font-size: .16rem;
+          line-height: .45rem;
+          background: #eee;
+          border-radius: 5px;
+        }
+        #go {
+          display: block;
+          width: 3rem;
+          height: .44rem;
+          margin: 0 auto;
+          margin-top:.3rem;
+          font-size: .2rem;
+          line-height: .44rem;
+          color: #fff;
+          text-align: center;
+          box-sizing: border-box;
+          border-radius: 4px;
+          background: #333333;
+        }
+        h3 {
+          width: 100%;
+          height: .45rem;
+          margin-top: .4rem;
+          padding-left: .2rem;
+          font-size: .18rem;
+          text-align: left;
+          color: #fff;
+          line-height: .45rem;
+          border-radius: 5px 5px 0 0;
+          background: #333;
+          box-sizing: border-box;
+        }
     </style>
 
 </head>
@@ -134,10 +192,16 @@
             </p>
             <p class="p2" style="text-align: left;">另外您可以在嗨范儿APP个人中心中我的页面查看相关的信息。</p>
         </div> -->
-        <div class="content-mid2" id="cmd" style="display: none;">
+
+
+        <div class="content-mid2" id="cmd2" style="height: 2.4rem; display: none;">
             <div class="content-mid" style="text-align: left;">
 
-              <p class="m">页面获取方式错误。</p>
+              <p class="m">
+                请输入您的票号:
+              </p>
+              <input id="phs" type="text" name="" placeholder="票号" value="">
+              <botton id="go" class="code-now">确定</botton>
             </div>
         </div>
 
@@ -161,18 +225,29 @@
                     <img src="./img/Group 4@2x.png" class="fl icon_comp">
                     <p  class="fl text_comp">嗨范儿</p>
                 </div>
-                <p class="p3"><span>赛事名称：</span><span id="metch_name"></span></p>
-                <p class="p3"><span>赛事类型：</span><span id="metch_type"></span></p>
-                <p class="p3"><span>赛区城市：</span><span id="city_name"></span></p>
-                <p class="p3"><span>票号：</span><span id="ticket_no"></span></p>
-                <p class="p3"><span>姓名：</span><span id="user_name"></span></p>
-                <p class="p3"><span>性别：</span><span id="sex"></span></p>
-                <p class="p3"><span>手机号：</span><span id="phone"></span></p>
-                <p class="p3"><span>身份证：</span><span id="id_no"></span></p>
-                <p class="p3"><span>支付状态：</span><span id="pay_status"></span></p>
+                <h3>赛事信息</h3>
+                <p class="p3 pp"><span>赛事名称：</span><span id="metch_name"></span></p>
+                <p class="p3 pp"><span>赛事类型：</span><span id="metch_type"></span></p>
+                <p class="p3 pp"><span>赛区城市：</span><span id="city_name"></span></p>
+                <p class="p3 pp"><span>票号：</span><span id="ticket_no"></span></p>
+                <p class="p3 pp"><span>支付状态：</span><span id="pay_status"></span></p>
+
+                <h3>个人信息</h3>
+                <p class="p3 pp"><span>姓名：</span><span id="user_name"></span></p>
+                <p class="p3 pp"><span>性别：</span><span id="sex"></span></p>
+                <p class="p3 pp"><span>手机号：</span><span id="phone"></span></p>
+                <p class="p3 pp"><span>身份证：</span><span id="id_no"></span></p>
 
             </div>
         </div>
+
+        <div class="content-mid2" id="cmd" style="display: none;">
+            <div class="content-mid" style="text-align: left;">
+
+              <p class="m">没有此票号。</p>
+            </div>
+        </div>
+
     </div>
     <script>
       function getQueryString(name) {
@@ -184,8 +259,10 @@
       var ph = getQueryString('ph');
       if(!st && !ph) {
         st = '';
-        alert('获取失败！');
-        document.getElementById('cmd').style.display = 'block';
+        ph = '';
+
+        // alert('获取失败！');
+        document.getElementById('cmd2').style.display = 'block';
       } else {
 
       }
@@ -193,6 +270,70 @@
     <script type="text/javascript" src="./js/zepto.js"></script>
     <script>
 
+    $('#go').on('click', function(event){
+      event.preventDefault();
+      var phs = $('#phs').val();
+
+      if (!($.trim(phs))) {
+        alert('请您输入票号！');
+        return;
+      }
+      var jso1 = { url: 'bmi' };
+
+      jso1.ticket_no = phs;
+      get({
+            url: '../php1/index.php',
+            data: jso1,
+            success: function(data) {
+              if (data && data.code == "1") {
+                var info = data.data;
+                $('#ticket_no').text(info.ticket_no);
+                $('#metch_name').text(info.metch_name);
+                var tyss = '';
+                switch(info.metch_type) {
+                  case '1':
+                    tyss = '个人';
+                    break;
+                  case '2':
+                    tyss = '团队齐舞';
+                    break;
+                  default:
+                    tyss = '个人';
+                }
+                $('#cmd').hide();
+                $('#metch_type').text(tyss);
+
+                $('#city_name').text(info.city_name);
+                $('#user_name').text(info.user_name);
+                $('#sex').text(info.sex);
+
+                $('#phone').text(info.phone);
+                $('#id_no').text(info.id_no);
+                if (info.pay_status == '1') {
+                  $('#pay_status').text('已支付');
+                }else {
+                  $('#pay_status').text('未支付');
+                }
+                // $('#pay_status').text(info.pay_status);
+                document.getElementById('ddd').style.display = 'block';
+                // $('#cmd2').hide();
+              } else if(data && data.code == "-5040010") {
+                if (!st && !ph) {
+                  $('#cmd').show();
+                  $('#ddd').hide();
+                }else {
+                  $('#cmd1').show();
+                }
+
+
+              } else {
+                alert(data.msg);
+                $('#ddd').hide();
+                $('#cmd').hide();
+              }
+            }
+          });
+    });
 
       function get(param){
         $.ajax({
@@ -214,31 +355,35 @@
         jso.ticket_no = ph;
       }
 
-      get({
-            url: '../php1/index.php',
-            data: jso,
-            success: function(data) {
-              if (data && data.code == "1") {
-                var info = data.data;
-                $('#ticket_no').text(info.ticket_no);
-                $('#metch_name').text(info.metch_name);
-                $('#metch_type').text(info.metch_type);
+      if (!st && !ph) {
 
-                $('#city_name').text(info.city_name);
-                $('#user_name').text(info.user_name);
-                $('#sex').text(info.sex);
+      }else {
+        get({
+              url: '../php1/index.php',
+              data: jso,
+              success: function(data) {
+                if (data && data.code == "1") {
+                  var info = data.data;
+                  $('#ticket_no').text(info.ticket_no);
+                  $('#metch_name').text(info.metch_name);
+                  $('#metch_type').text(info.metch_type);
 
-                $('#phone').text(info.phone);
-                $('#id_no').text(info.id_no);
-                $('#pay_status').text(info.pay_status);
-                document.getElementById('ddd').style.display = 'block';
-              } else if(data && data.code == "-5040010") {
-                $('#cmd1').show();
-              } else {
-                alert(data.msg);
+                  $('#city_name').text(info.city_name);
+                  $('#user_name').text(info.user_name);
+                  $('#sex').text(info.sex);
+
+                  $('#phone').text(info.phone);
+                  $('#id_no').text(info.id_no);
+                  $('#pay_status').text(info.pay_status);
+                  document.getElementById('ddd').style.display = 'block';
+                } else if(data && data.code == "-5040010") {
+                  $('#cmd1').show();
+                } else {
+                  alert(data.msg);
+                }
               }
-            }
-          });
+            });
+      }
 
     </script>
 </body>

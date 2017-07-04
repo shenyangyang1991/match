@@ -9,6 +9,33 @@
     <title>中国流行舞公开赛</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <style media="screen">
+      .qq {
+        position: fixed;
+        z-index: 999999999;
+        left: 0; right: 0; top: 0; bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      .qq .cc {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 3.55rem;
+        height: .5rem;
+        font-size: .18rem;
+        line-height: .5rem;
+        text-align: center;
+        color: #000;
+        background: #fff;
+        border-radius: 5px;
+      }
+    </style>
     <script type="text/javascript" src="./js/tb.js"></script>
 </head>
 <body>
@@ -87,21 +114,26 @@
         </div>
     </div>
     <div class="three clearfix">
-        <a class="three-left fl">
+        <a id="kefu" class="three-left fl">
             客服
         </a>
         <a class="three-right fl" id="pay">
             立即报名
         </a>
     </div>
+    <div class="qq" style="display: none;">
+      <div class="cc">
+        联系客服QQ：1102335713
+      </div>
+    </div>
     <div class="message" style="display: none;">
       <div class="f">
 
       </div>
-      <img src="./img/Group-20@2x.png" alt="">
-      <div class="close">
+      <img id="close" src="./img/Group-20@2x.png" alt="">
+      <!-- <div class="close">
 
-      </div>
+      </div> -->
     </div>
     <script type="text/javascript" src="./js/zepto.js"></script>
     <script type="text/javascript">
@@ -116,8 +148,15 @@
           $('.message').show();
 
         });
-
-        $('.close').on('click', function(event){
+        $('#kefu').on('click', function(event){
+          event.preventDefault();
+          $('.qq').show();
+        });
+        $('.qq').on('click', function(event){
+          event.preventDefault();
+          $('.qq').hide();
+        });
+        $('#close').on('click', function(event){
           event.preventDefault();
           $('.message').hide();
         });
