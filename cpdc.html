@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <meta content="telephone=no" name="format-detection">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>报名成功</title>
+    <title>我的CPDC</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <script type="text/javascript" src="./js/tb.js"></script>
     <style type="text/css">
@@ -222,7 +222,7 @@
                   var info = data.data;
                   $('#id_no').text(info.ticket_no);
                   $('#didik').text(info.didi_code);
-                  $('#qxc').src('http://api.open.highfaner.com/basic/qr/get_image?data=' + urlsss);
+                  $('#qxc').attr('src','http://api.open.highfaner.com/basic/qr/get_image?data=' + urlsss);
                   document.getElementById('ddd').style.display = 'block';
                   document.getElementById('ddd1').style.display = 'block';
                   document.getElementById('ddd2').style.display = 'block';

@@ -68,7 +68,7 @@
                   if (fee == 1) {
                     $('#match').append('<p data-param="FREESTYLE" class="item-child fl">FREESTYLE</p>');
                     $('#match').append('<p data-param="BREAKING" class="item-child fl">BREAKING</p>');
-                    $('#match').append('<p data-param="SHUFFKE" class="item-child fl">SHUFFKE</p>');
+                    $('#match').append('<p data-param="SHUFFKE" class="item-child fl">SHUFFLE</p>');
                   } else {
                     $('#match').append('<p data-param="齐舞赛" class="item-child fl item-child-active">齐舞赛</p>');
                     $('#match').attr('data-param', '齐舞赛');
@@ -148,7 +148,7 @@
     <div class="loading hide">
       正在提交订单...
     </div>
-
+    <script src="./js/id.js" charset="utf-8"></script>
     <script>
         function get(param){
           $.ajax({
@@ -299,9 +299,14 @@
                 alert("手机号码有误，请重填");
                 return false;
             }
-            if(!(/^\d{18}$/.test(id))){
-                alert("身份证有误，请重填");
-                return false;
+            // if(!(/^\d{18}$/.test(id))){
+            //     alert("身份证有误，请重填");
+            //     return false;
+            // }
+            //
+            var idv = IdentityCodeValid(id);
+            if (!idv) {
+              return false;
             }
             if(!age){
                 alert("请填写年龄");

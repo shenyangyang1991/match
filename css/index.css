@@ -183,17 +183,17 @@
   left: 50%; top: 50%;
   display: block;
   width: 3.55rem;
-  height: 6.47rem;
+  height: 5.67rem;
   margin-left: -1.775rem;
-  margin-top: -3.235rem;
+  margin-top: -2.835rem;
 }
 
 .message .close {
   position: absolute;
   left: 0; right: 0;
-  bottom: .4rem;
+  bottom: .3rem;
   z-index: 3;
   width: 1.4rem;
-  height: .5rem;
+  height: .6rem;
   margin: auto;
 }
