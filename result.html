@@ -365,9 +365,20 @@
               success: function(data) {
                 if (data && data.code == "1") {
                   var info = data.data;
+                  var tyss = '';
+                  switch(info.metch_type) {
+                    case '1':
+                      tyss = '个人';
+                      break;
+                    case '2':
+                      tyss = '团队齐舞';
+                      break;
+                    default:
+                      tyss = '个人';
+                  }
                   $('#ticket_no').text(info.ticket_no);
                   $('#metch_name').text(info.metch_name);
-                  $('#metch_type').text(info.metch_type);
+                  $('#metch_type').text(tyss);
 
                   $('#city_name').text(info.city_name);
                   $('#user_name').text(info.user_name);
@@ -375,7 +386,12 @@
 
                   $('#phone').text(info.phone);
                   $('#id_no').text(info.id_no);
-                  $('#pay_status').text(info.pay_status);
+                  // $('#pay_status').text(info.pay_status);
+                  if (info.pay_status == '1') {
+                    $('#pay_status').text('已支付');
+                  }else {
+                    $('#pay_status').text('未支付');
+                  }
                   document.getElementById('ddd').style.display = 'block';
                 } else if(data && data.code == "-5040010") {
                   $('#cmd1').show();
